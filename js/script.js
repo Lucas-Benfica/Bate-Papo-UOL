@@ -82,10 +82,5 @@ function enviou(deuCerto){
     txt.value = '';
 }
 
-
-
-
 pedirNome();
-setInterval(Online, 5000);
-atualizarMensagens();
-setInterval(atualizarMensagens, 3000);
+
