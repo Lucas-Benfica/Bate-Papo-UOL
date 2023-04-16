@@ -13,6 +13,9 @@ function pedirNome(){
 }
 function nomeSucesso(retorno){
     console.log('Nome cadastrado com sucesso!');
+    setInterval(Online, 5000);
+    atualizarMensagens();
+    setInterval(atualizarMensagens, 3000);
 }
 function nomeErro(retorno){
     console.log("Erro ao cadastrar o nome");
@@ -25,6 +28,7 @@ function nomeErro(retorno){
 function Online(){
     const online = axios.post('https://mock-api.driven.com.br/api/vm/uol/status', nome);
     //online.then((resp) => console.log(resp));
+    console.log('online');
 }
 
 //Mensagens
@@ -33,7 +37,7 @@ function atualizarMensagens(){
     const promiseMSG = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages');
     promiseMSG.then( atualizarHTML );
     promiseMSG.catch(erro => {console.log('Erro ao acessar as mensagens');atualizarMensagens()})
-    
+    console.log('atualizou');
 }
 function atualizarHTML(mensagens){
     //console.log(mensagens);
@@ -69,7 +73,7 @@ function enviar(){
 
     const promese = axios.post('https://mock-api.driven.com.br/api/vm/uol/messages', envio);
     promese.then(enviou);
-    promese.catch(erro => {console.log('Erro ao enviar a mensagem')});
+    promese.catch(erro => {console.log('Erro ao enviar a mensagem'); window.location.reload()});
 }
 function enviou(deuCerto){
     console.log(deuCerto);
