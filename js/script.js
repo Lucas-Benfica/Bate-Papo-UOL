@@ -43,16 +43,43 @@ function atualizarHTML(mensagens){
     feed.innerHTML = '';
     for(let i=0; i < msg.length; i++){
         feed.innerHTML += `
-        <div class="mensagem">
+        <div data-test="message" class="mensagem">
          <p class="time">(${msg[i].time})</p>
          <p class="user">${msg[i].from}</p>
-         <p class="destino">para <p class="bold">${msg[i].to}</p>: </p>
-         <p class="msg">${msg[i].text}</p>    
+         <p class="destino">para <p class="bold">${msg[i].to}</p></p>
+         <p class="msg">: ${msg[i].text}</p>    
          </div>
         `
     }
 
 }
+
+//Enviar mensagens 
+
+function enviar(){
+    const txt = document.querySelector(".textoMensagem").value;
+    console.log(txt);
+    console.log(nome.name);
+    let envio = {
+        from: nome.name,
+        to: 'Todos',
+        text: txt,
+        type: 'message'
+    };
+
+    const promese = axios.post('https://mock-api.driven.com.br/api/vm/uol/messages', envio);
+    promese.then(enviou);
+    promese.catch(erro => {console.log('Erro ao enviar a mensagem')});
+}
+function enviou(deuCerto){
+    console.log(deuCerto);
+    atualizarMensagens();
+    const txt = document.querySelector(".textoMensagem");
+    txt.value = '';
+}
+
+
+
 
 pedirNome();
 setInterval(Online, 5000);
