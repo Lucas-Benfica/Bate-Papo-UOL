@@ -33,7 +33,7 @@ body{
 }
 
 .corpo{
-    margin: 80px 0;
+    margin: 100px 0 80px;
 }
 
 footer{
@@ -68,4 +68,35 @@ input:focus {
 footer ion-icon{
     height: 26px;
     width: 26px;
+}
+
+/* Aqui começa a formatação das mensagens*/
+
+.mensagem{
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    color: #000000;
+
+    padding: 15px 8px;
+    margin-bottom: 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    background-color: white;
+}
+.mensagem .time{
+    color: #AAAAAA;
+}
+.mensagem .user{
+    margin-left: 5px;
+    font-weight: 700;
+}
+.mensagem .destino{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.bold{
+    font-weight: 700;
 }

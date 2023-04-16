@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/style.css">
 
-    
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+ 
 </head>
 <body>
 
@@ -20,11 +22,20 @@
     </header>
 
     <div class="corpo">
-        
+        <div class="mensagem">
+            <p class="time">(10:50:22)</p>
+            <p class="user">Lucas</p>
+            <p class="destino">para Todos:</p>
+            <p class="msg">Boa tarde pessoal como vcs estao no dia de hoje?</p>
+        </div>
+        <div class="mensagem">
+            <div class="msg">(10:50:22)  Lucas para todos: Boa tarde pessoal como vcs estao no dia de hoje?</div>
+        </div>
     </div>
 
 
     <footer>
+        
         <input type="text" placeholder="Escreva aqui...">
         <ion-icon class="botaoEnviar" name="paper-plane-outline"></ion-icon>
         
@@ -32,6 +43,7 @@
 
 
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>
