@@ -20,7 +20,6 @@ function nomeSucesso(retorno){
 function nomeErro(retorno){
     console.log("Erro ao cadastrar o nome");
     const statusErro = retorno.response.status;
-    console.log(statusErro);
     pedirNome();
 }
 
@@ -28,7 +27,6 @@ function nomeErro(retorno){
 function Online(){
     const online = axios.post('https://mock-api.driven.com.br/api/vm/uol/status', nome);
     //online.then((resp) => console.log(resp));
-    console.log('online');
 }
 
 //Mensagens
@@ -37,7 +35,6 @@ function atualizarMensagens(){
     const promiseMSG = axios.get('https://mock-api.driven.com.br/api/vm/uol/messages');
     promiseMSG.then( atualizarHTML );
     promiseMSG.catch(erro => {console.log('Erro ao acessar as mensagens');atualizarMensagens()})
-    console.log('atualizou');
 }
 function atualizarHTML(mensagens){
     //console.log(mensagens);
@@ -60,10 +57,12 @@ function atualizarHTML(mensagens){
 
 //Enviar mensagens 
 
+
 function enviar(){
     const txt = document.querySelector(".textoMensagem").value;
-    console.log(txt);
-    console.log(nome.name);
+    if(txt === ''){
+        return;
+    }
     let envio = {
         from: nome.name,
         to: 'Todos',
@@ -76,11 +75,17 @@ function enviar(){
     promese.catch(erro => {console.log('Erro ao enviar a mensagem'); window.location.reload()});
 }
 function enviou(deuCerto){
-    console.log(deuCerto);
     atualizarMensagens();
     const txt = document.querySelector(".textoMensagem");
     txt.value = '';
 }
+// Se apertar enter no input, a mensagem também é enviada
+document.addEventListener('keypress', function(event){
+    if(event.code === 'Enter'){
+        enviar();
+    }
+});
+
 
 pedirNome();
 
